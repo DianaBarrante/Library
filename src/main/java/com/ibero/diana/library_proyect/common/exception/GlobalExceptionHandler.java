@@ -47,7 +47,7 @@ public class GlobalExceptionHandler {
         });
         ApiResponse<Map<String, String>> response = new ApiResponse<>(
                 HttpStatus.BAD_REQUEST.value(),
-                "Validation failed",
+                "Validación Fallida",
                 errors
         );
         return ResponseEntity.badRequest().body(response);
