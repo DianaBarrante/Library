@@ -31,7 +31,7 @@ public class UserController {
         UserResponseDto user = userWriteService.userCreate(userRequestDto);
         ApiResponse<UserResponseDto> response = new ApiResponse<>(
                 HttpStatus.OK.value(),
-                "User created successfully",
+                "Usuario Creado Satisfactoriamente",
                 user
         );
         return ResponseEntity.ok(response);
