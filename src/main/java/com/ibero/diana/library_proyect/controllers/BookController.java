@@ -75,7 +75,7 @@ public class BookController {
         Page<ResponseBookDto> books = readBookService.getBooksByAvailability(available, pageable);
         ApiResponse<Page<ResponseBookDto>> response = new ApiResponse<>(
                 HttpStatus.OK.value(),
-                "Books retrieved successfully by availability",
+                "Libros disponibles obtenidos satisfactoriamente",
                 books
         );
         return ResponseEntity.ok(response);
