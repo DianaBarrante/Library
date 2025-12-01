@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: library-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/
+      - library_data:/var/lib/mysql
+    networks:
+      - library-network
+
+  app:
+    restart: on-failure
+    build: .
+    container_name: ${PROJECT_NAME}
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - library-network
+
+volumes:
+  library_data:
+
+networks:
+  library-network:
+    driver: bridge
